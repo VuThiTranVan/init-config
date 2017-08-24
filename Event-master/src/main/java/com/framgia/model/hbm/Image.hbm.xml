@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.framgia.model">
+
+	<class name="Image" table="Image">
+		<id name="id" column="ID">
+			<generator class="increment" />
+		</id>
+		<property name="url" column="URL" />
+		<property name="description" column="DESCRIPTION" />
+		<property name="title" column="TITLE" />
+
+		<many-to-one name="group" class="Group" >
+			<column name="IDGROUP" not-null="true" />
+		</many-to-one>
+
+		<list name="votes" lazy="true" inverse="true">
+			<key column="IDIMAGE" not-null="true" />
+			<list-index column="ID" />
+			<one-to-many class="Vote" />
+		</list>
+
+		<property name="userCreate" column="USERCREATE" />
+		<property name="deleteFlag" column="DELETEFLAG" />
+		<property name="dateCreate" column="DATECREATE" />
+		<property name="userUpdate" column="USERUPDATE" />
+		<property name="dateUpdate" column="DATEUPDATE" />
+	</class>
+
+</hibernate-mapping>

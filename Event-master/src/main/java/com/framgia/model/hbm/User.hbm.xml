@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.framgia.model">
+	<class name="User" table="User">
+		<id name="id" column="ID">
+			<generator class="increment" />
+		</id>
+
+		<property name="username" column="USERNAME" />
+		<property name="password" column="PASSWORD" />
+		<property name="name" column="NAME" />
+		<property name="gender" column="GENDER" />
+		<property name="birthday" column="BIRTHDAY" />
+		<property name="phone" column="PHONE" />
+		<property name="email" column="EMAIL" />
+		<property name="statusJoin" column="STATUSJOIN" />
+		<property name="idGroup" column="IDGROUP" />
+		<property name="deleteFlag" column="DELETEFLAG" />
+		<property name="userCreate" column="USERCREATE" />
+		<property name="dateCreate" column="DATECREATE" />
+		<property name="userUpdate" column="USERUPDATE" />
+		<property name="dateUpdate" column="DATEUPDATE" />
+
+		<many-to-one name="permission" class="Permission" >
+			<column name="IDPERMISSION" not-null="true" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

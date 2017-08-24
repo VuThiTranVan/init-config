@@ -1,0 +1,15 @@
+/* Bootstrap Modallery. Use #mdlyDialog to customize your modal. */
+/* Navigation style */
+#mdlyFooter {
+	text-align: center !important
+}
+
+.navigator-btn {
+	border: 0;
+	border-radius: 0;
+	max-width: 70px
+}
+
+.highlighted {
+	border: 2px solid #333
+}

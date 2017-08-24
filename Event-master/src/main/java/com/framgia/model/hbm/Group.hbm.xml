@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.framgia.model">
+
+	<class name="Group" table="tblGroup">
+		<id name="id" column="ID">
+			<generator class="increment" />
+		</id>
+		<many-to-one name="user" class="User">
+			<column name="IDUSER" not-null="true" />
+		</many-to-one>
+		<property name="name" column="NAME" />
+		<property name="description" column="DESCRIPTION" />
+		<property name="note" column="NOTE" />
+		<property name="type" column="TYPE" />
+		<property name="status" column="STATUS" />
+		<property name="dateStart" column="DATESTART" />
+		<property name="dateEnd" column="DATEEND" />
+		<property name="deleteFlag" column="DELETEFLAG" />
+		<property name="dateCreate" column="DATECREATE" />
+		<property name="userUpdate" column="USERUPDATE" />
+		<property name="dateUpdate" column="DATEUPDATE" />
+
+		<list name="images" lazy="true" inverse="true">
+			<key column="IDGROUP" not-null="true" />
+			<list-index column="ID" />
+			<one-to-many class="Image" />
+		</list>
+
+		<list name="users" lazy="true" inverse="true">
+			<key column="IDGROUP" not-null="true" />
+			<list-index column="id" />
+			<one-to-many class="User" />
+		</list>
+	</class>
+
+</hibernate-mapping>
